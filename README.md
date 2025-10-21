@@ -6,18 +6,18 @@ OpenTelemetry-based SDK for automatically tracking and billing AI agent usage.
 
 ### From GitHub (Recommended)
 ```bash
-pip install git+https://github.com/Agent-Bill/python.git
+pip install git+https://github.com/Agent-Bill/agentbill-python.git
 ```
 
 ### From PyPI (Coming Soon)
 ```bash
-#pip install agentbill
+pip install agentbill
 ```
 
 ### From Source
 ```bash
-git clone https://github.com/Agent-Bill/python.git
-cd python
+git clone https://github.com/Agent-Bill/agentbill-python.git
+cd agentbill-python
 pip install -e .
 ```
 
@@ -37,13 +37,19 @@ pip install -r requirements.txt
 agentbill-python/
 ├── README.md
 ├── setup.py
+├── requirements.txt
 ├── agentbill/
 │   ├── __init__.py
 │   ├── client.py
 │   ├── tracer.py
 │   └── types.py
 └── examples/
-    └── basic_usage.py
+    ├── openai_basic.py
+    ├── anthropic_basic.py
+    ├── bedrock_basic.py
+    ├── azure_openai_basic.py
+    ├── mistral_basic.py
+    └── google_ai_basic.py
 ```
 
 ## Quick Start
@@ -216,12 +222,42 @@ pip install twine
 twine upload dist/*
 ```
 
-## GitHub Repository Setup
+## Development
 
-1. Create repository: `https://github.com/Agent-Bill/python`
-2. Push all files (agentbill/, examples/, LICENSE, setup.py, README.md)
-3. Tag releases: `git tag v1.0.0 && git push origin v1.0.0`
-4. Users can install with: `pip install git+https://github.com/Agent-Bill/python.git`
+### Setting up Development Environment
+```bash
+# Clone the repository
+git clone https://github.com/Agent-Bill/agentbill-python.git
+cd agentbill-python
+
+# Create and activate virtual environment
+python -m venv venv
+source venv/bin/activate  # On Windows use: venv\Scripts\activate
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Install package in development mode
+pip install -e .
+```
+
+### Running Tests
+```bash
+# Install test dependencies
+pip install pytest pytest-cov
+
+# Run tests with coverage
+pytest --cov=agentbill tests/
+```
+
+### Making a Release
+1. Update version in `setup.py` and `agentbill/__init__.py`
+2. Update CHANGELOG.md
+3. Create and push a new tag:
+   ```bash
+   git tag v1.0.0
+   git push origin v1.0.0
+   ```
 
 ## License
 
